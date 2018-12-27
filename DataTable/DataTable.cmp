@@ -1,0 +1,122 @@
+<aura:component description="Data Table Component"
+                implements="c:PaginationInterface,forceCommunity:availableForAllPageTypes,force:appHostable">
+
+    <!-- Attributes -->
+    <aura:attribute name="tableData" type="Object[]" default="[]" access="public" />
+
+    <!-- Labels -->
+    <aura:attribute name="filterOnLabel" type="String" default="Filter On" access="private" />
+    <aura:attribute name="filterOffLabel" type="String" default="Filter Off" access="private" />
+    <aura:attribute name="dataTableLabel" type="String" default="Data Table" access="private" />
+    <aura:attribute name="positionLabel" type="String" default="#" access="private" />
+    <aura:attribute name="nameLabel" type="String" default="Name" access="private" />
+    <aura:attribute name="birthdayLabel" type="String" default="Birthday" access="private" />
+    <aura:attribute name="cityLabel" type="String" default="City" access="private" />
+    <aura:attribute name="streetLabel" type="String" default="Street" access="private" />
+    <aura:attribute name="emailLabel" type="String" default="Email" access="private" />
+    <aura:attribute name="telephoneLabel" type="String" default="Telephone" access="private" />
+
+    <!-- Handlers -->
+    <aura:handler name="init" action="{!c.getData}" value="{!this}" />
+
+    <lightning:layout class="header-section">
+        {#v.dataTableLabel}
+    </lightning:layout>
+
+    <lightning:layout class="filter-section">
+        <lightning:input class="radio-input filter-on-radio"
+                         type="radio"
+                         label="{#v.filterOnLabel}"
+                         name="options"
+                         value="1"
+                         aura:id="filterOn"
+                         onchange="{!c.switchFilter}" />
+
+        <lightning:input class="radio-input filter-off-radio"
+                         type="radio"
+                         label="{#v.filterOffLabel}"
+                         name="options"
+                         value="2"
+                         checked="true"
+                         aura:id="filterOff"
+                         onchange="{!c.switchFilter}" />
+    </lightning:layout>
+
+    <lightning:layout class="table-section">
+        <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps position-cell" scope="col">
+                        {#v.positionLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps" scope="col">
+                        {#v.nameLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps" scope="col">
+                        {#v.birthdayLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps" scope="col">
+                        {#v.cityLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps" scope="col">
+                        {#v.streetLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps email-cell" scope="col">
+                        {#v.emailLabel}
+                    </th>
+
+                    <th class="slds-text-title_caps telephone-cell" scope="col">
+                        {#v.telephoneLabel}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <aura:iteration items="{!v.tableData}" var="item" indexVar="index" start="{!v.paginationStart}" end="{!v.paginationEnd}">
+                    <tr class="slds-hint-parent">
+                        <td class="position-cell" data-label="{#v.positionLabel}">
+                            {!index + 1}
+                        </td>
+
+                        <td data-label="{#v.nameLabel}">
+                            {!item.name}
+                        </td>
+
+                        <td data-label="{#v.birthdayLabel}">
+                            {!item.birthday}
+                        </td>
+
+                        <td data-label="{#v.cityLabel}">
+                            {!item.city}
+                        </td>
+
+                        <td data-label="{#v.streetLabel}">
+                            {!item.street}
+                        </td>
+
+                        <td class="email-cell" data-label="{#v.emailLabel}">
+                            {!item.email}
+                        </td>
+
+                        <td class="telephone-cell" data-label="{#v.telephoneLabel}">
+                            {!item.telephone}
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:layout>
+
+    <c:Pagination paginationData="{!v.tableData}"
+                  paginationStart="{!v.paginationStart}"
+                  paginationEnd="{!v.paginationEnd}"
+                  paginationValues="[3, 5, 7, 10]"
+                  paginationStyle="neutral"
+                  paginationPosition="center" />
+
+</aura:component>

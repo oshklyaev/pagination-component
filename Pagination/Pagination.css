@@ -1,0 +1,130 @@
+.THIS {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 20rem;
+    padding: 1.5rem 0rem;
+}
+
+.THIS.left {
+    justify-content: flex-start;
+}
+
+.THIS.right {
+    justify-content: flex-end;
+}
+
+.THIS.neutral .button-section button {
+    background-color: white;
+    border-color: #d4d4d4;
+    padding: 0rem 1rem;
+    transition: 0.1s;
+}
+
+.THIS.neutral .button-section button:not([disabled="false"]):hover {
+    background-color: #f4f6f9;
+}
+
+.THIS.neutral .button-section button[disabled="true"]:hover {
+    background-color: white;
+}
+
+.THIS.brand .button-section button {
+    background-color: #2574a9;
+    border-color: #135f90;
+    color: white;
+    padding: 0rem 1rem;
+    transition: 0.1s;
+}
+
+.THIS.brand .button-section button:not([disabled="false"]):hover {
+    background-color: #135f90;
+}
+
+.THIS.brand .button-section button[disabled="true"]:hover {
+    background-color: #2574a9;
+}
+
+.THIS.brand .button-section button .slds-icon {
+    fill: white;
+}
+
+.THIS .slds-button:focus {
+    box-shadow: none;
+    outline: 0;
+}
+
+.THIS .to-start-button .slds-icon,
+.THIS .to-finish-button .slds-icon {
+    bottom: 0.125rem;
+    fill: #4d8abf;
+    position: relative;
+    transform: rotate(90deg);
+}
+
+.THIS .step-back-button .slds-icon,
+.THIS .step-forward-button .slds-icon {
+    bottom: 0.125rem;
+    fill: #4d8abf;
+    position: relative;
+    width: 0.9375rem;
+}
+
+.THIS .step-back-button .slds-icon {
+    right: 0.0625rem;
+}
+
+.THIS .step-forward-button .slds-icon {
+    left: 0.0625rem;
+}
+
+.THIS .pagination-value {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.THIS .button-disabled .slds-icon {
+    fill: #cdd6de;
+}
+
+.THIS .current-list-position {
+    color: #4d8abf;
+}
+
+.THIS .pagination-value .slds-form-element__label,
+.THIS .pagination-value .slds-select_container::before {
+    display: none;
+}
+
+.THIS .slds-select_container::after {
+    border-top-color: #4d8abf;
+    bottom: 0.75rem;
+}
+
+                    /* Mobile */
+
+.THIS.pagination-mobile {
+    font-size: 0.8125rem;
+}
+
+.THIS.pagination-mobile .slds-select_container::after {
+    bottom: 1rem;
+}
+
+@media screen and (max-width: 24rem) {
+
+    .THIS.neutral .button-section button,
+    .THIS.brand .button-section button {
+        padding: 0rem 0.75rem;
+    }
+
+    .THIS.neutral .button-section .current-list-position,
+    .THIS.brand .button-section .current-list-position {
+        padding: 0rem 0.5rem;
+    }
+
+    .THIS .pagination-value {
+        margin-left: 0.5rem;
+    }
+
+}

@@ -1,0 +1,78 @@
+<aura:component description="Pagination Component"
+                implements="c:PaginationInterface">
+
+    <!-- Attributes -->
+    <aura:attribute name="paginationData" type="Object[]" default="[]" access="public" />
+    <aura:attribute name="paginationStyle" type="String" default="" access="public" />
+    <aura:attribute name="paginationPosition" type="String" default="" access="public" />
+
+    <!-- Handlers -->
+    <aura:handler name="init" action="{!c.setAttributes}" value="{!this}" />
+    <aura:handler name="change" action="{!c.setParameters}" value="{!v.paginationData}" />
+    <aura:handler name="change" action="{!c.setParameters}" value="{!v.paginationInterval}" />
+
+    <lightning:layout class="{!'pagination-section' + if(v.paginationStyle == 'brand', ' brand', ' neutral') + if($Browser.isPhone, ' pagination-mobile') +
+                             if(v.paginationPosition == 'left', ' left', if(v.paginationPosition == 'right', ' right'))}">
+
+        <lightning:buttonGroup class="button-section">
+            <lightning:button class="{!'to-start-button' + if(v.currentPaginationPosition == 1, ' button-disabled')}"
+                              disabled="{!if(v.currentPaginationPosition == 1, true, false)}"
+                              onclick="{!c.paginationAction}"
+                              variant="{!if(v.paginationStyle == 'brand', 'brand', 'neutral')}"
+                              aura:id="toFirstPage">
+
+                <lightning:icon iconName="utility:jump_to_bottom"
+                                size="x-small" />
+            </lightning:button>
+
+            <lightning:button class="{!'step-back-button' + if(v.currentPaginationPosition == 1, ' button-disabled')}"
+                              disabled="{!if(v.currentPaginationPosition == 1, true, false)}"
+                              onclick="{!c.paginationAction}"
+                              variant="{!if(v.paginationStyle == 'brand', 'brand', 'neutral')}"
+                              aura:id="stepBackward">
+
+                <lightning:icon iconName="utility:chevronleft"
+                                size="xx-small" />
+            </lightning:button>
+
+            <lightning:button class="current-list-position"
+                              variant="{!if(v.paginationStyle == 'brand', 'brand', 'neutral')}"
+                              disabled="true">
+
+                <span class="slds-is-relative">
+                    {!v.currentPaginationPosition} of {!v.maxPaginationPosition}
+                </span>
+            </lightning:button>
+
+            <lightning:button class="{!'step-forward-button' + if(v.currentPaginationPosition == v.maxPaginationPosition, ' button-disabled')}"
+                              disabled="{!if(v.currentPaginationPosition == v.maxPaginationPosition, true, false)}"
+                              onclick="{!c.paginationAction}"
+                              variant="{!if(v.paginationStyle == 'brand', 'brand', 'neutral')}"
+                              aura:id="stepForward">
+
+                <lightning:icon iconName="utility:chevronright"
+                                size="xx-small" />
+            </lightning:button>
+
+            <lightning:button class="{!'to-finish-button' + if(v.currentPaginationPosition == v.maxPaginationPosition, ' button-disabled')}"
+                              disabled="{!if(v.currentPaginationPosition == v.maxPaginationPosition, true, false)}"
+                              onclick="{!c.paginationAction}"
+                              variant="{!if(v.paginationStyle == 'brand', 'brand', 'neutral')}"
+                              aura:id="toLastPage">
+
+                <lightning:icon iconName="utility:jump_to_top"
+                                size="x-small" />
+            </lightning:button>
+        </lightning:buttonGroup>
+
+        <lightning:select label="" value="{!v.paginationInterval}" class="pagination-value">
+            <aura:iteration items="{!v.paginationValues}" var="value">
+                <option value="{!value}">
+                    {!value}
+                </option>
+            </aura:iteration>
+        </lightning:select>
+
+    </lightning:layout>
+
+</aura:component>

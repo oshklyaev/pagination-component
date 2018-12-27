@@ -1,0 +1,68 @@
+.THIS {
+    cursor: default;
+}
+
+.THIS.header-section {
+    color: #676767;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.THIS.filter-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.THIS .filter-off-radio {
+    margin-left: 1rem;
+}
+
+.THIS .radio-input .slds-form-element__label {
+    cursor: pointer;
+    margin-right: 0rem;
+}
+
+.THIS .radio-input .slds-radio_faux {
+    margin-bottom: 0.0625rem;
+}
+
+.THIS thead tr th {
+    background-color: #fafaf9;
+    border-top-width: 0;
+}
+
+.THIS .slds-table_bordered:not(.slds-no-row-hover) tbody tr:hover > td:not(.slds-is-selected) {
+    box-shadow: none;
+}
+
+.THIS .position-cell {
+    padding-left: 1rem;
+}
+
+@media screen and (max-width: 75rem) {
+
+    .THIS.filter-section {
+        margin-right: 1rem;
+    }
+
+    .THIS .email-cell {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 48rem) {
+
+    .THIS.header-section {
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .THIS .email-cell {
+        display: block;
+    }
+
+}

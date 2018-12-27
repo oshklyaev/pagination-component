@@ -1,0 +1,8 @@
+<aura:interface description="Pagination Interface">
+    <aura:attribute name="paginationValues" type="Integer[]" default="[]" access="public" />
+    <aura:attribute name="paginationInterval" type="Integer" default="0" access="public" />
+    <aura:attribute name="paginationStart" type="Integer" default="0" access="public" />
+    <aura:attribute name="paginationEnd" type="Integer" default="0" access="public" />
+    <aura:attribute name="currentPaginationPosition" type="Integer" default="1" access="public" />
+    <aura:attribute name="maxPaginationPosition" type="Integer" default="1" access="public" />
+</aura:interface>
