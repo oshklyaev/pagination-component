@@ -1,14 +1,6 @@
 ({
     setPaginationAttributes : function(component, event, helper) {
-        var paginationValues = component.get("v.paginationValues");
-
-        if ($A.util.isEmpty(paginationValues) || !isFinite(paginationValues[0])) {
-            var values = [5, 10, 15, 20];
-            component.set("v.paginationValues", values);
-        }
-
-        component.set("v.paginationInterval", component.get("v.paginationValues")[0]);
-        component.set("v.paginationEnd", component.get("v.paginationValues")[0]);
+        component.set("v.paginationEnd", component.get("v.paginationInterval"));
     },
 
     setPaginationParameters : function(component, event, helper) {

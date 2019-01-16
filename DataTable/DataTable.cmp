@@ -116,6 +116,7 @@
                   paginationStart="{!v.paginationStart}"
                   paginationEnd="{!v.paginationEnd}"
                   paginationValues="[3, 5, 7, 10]"
+                  paginationInterval="7"
                   paginationStyle="neutral"
                   paginationPosition="center" />
 
