@@ -105,6 +105,7 @@
 
 .THIS.pagination-mobile {
     font-size: 0.8125rem;
+    padding: 1.25rem 0rem;
 }
 
 .THIS.pagination-mobile .slds-select_container::after {
